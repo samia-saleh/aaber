@@ -36,8 +36,11 @@ export default function RootLayout({
       </header>
       <main dir="rtl">
         <Sidebar></Sidebar>
-      </main>
+        <section className="PageMainSection">
         {children}
+        </section>
+      </main>
+       
       </body>
     </html>
   );

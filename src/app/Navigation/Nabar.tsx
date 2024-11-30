@@ -1,22 +1,25 @@
 import Image from "next/image"
-import log from "../Images/log.jpg"
-
+// import logo from "../Images/logo.jpg"
+import logo from "../Images/logo.svg"
+import { PiUser } from "react-icons/pi";
+import { PiHeart } from "react-icons/pi";
+import { PiShoppingCartSimple } from "react-icons/pi";
 const Nabar = () => {
   return (
     <div className="navbar" dir="rtl">
-      <div className='logoContainer'>
-        <Image src={log} alt="logo" width={148} height={87} />
+      <div className='logooContainer'>
+        <Image src={logo} alt="logo" width={148} height={87} />
       </div>
       <div className='personalInfoContainer'>
         <ul>
             <li>
-            <Image src={log} alt="user" width={48} height={48} />
+            <PiUser/>
             </li>
             <li>
-            <Image src={log} alt="wishlist" width={48} height={48} />
+            <PiHeart />
             </li>
             <li>
-            <Image src={log} alt="cart" width={48} height={48} />
+            <PiShoppingCartSimple />
             </li>
         </ul>
       </div>
