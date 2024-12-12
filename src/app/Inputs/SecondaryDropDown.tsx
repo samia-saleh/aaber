@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/dropdown-menu"
 // import { Children } from "react";
 
-const SecondaryDropDown = ({Trigger,children}) => {
+const SecondaryDropDown = ({Trigger="",children}) => {
   return (
    <div className="drop-down-container">
      <DropdownMenu >

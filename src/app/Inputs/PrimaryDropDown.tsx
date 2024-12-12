@@ -10,12 +10,12 @@ import {
 } from "@/components/ui/dropdown-menu"
 // import { Children } from "react";
 
-const PrimaryDropDown = ({Trigger,children}) => {
+const PrimaryDropDown = ({Trigger="",children}) => {
   return (
-   <div className="drop-down-container">
+   <div className="drop-down-container Primary">
      <DropdownMenu >
     <DropdownMenuTrigger><div className='trigger'><label>{Trigger}</label> <IoIosArrowDown className="inline" /></div></DropdownMenuTrigger>
-    <DropdownMenuContent className="w-80 flex flex-col px-0">
+    <DropdownMenuContent className="w-72 flex flex-col px-0">
       <div className="DropdownContent">
       {children}
       </div>

@@ -6,27 +6,47 @@ body {
   /* color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif; */
+  /* font-family: 'Times New Roman', Times, serif; */
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 26.24px;
+  color: #444444;
 }
 main{
 position:relative;
 }
 .PageMainSection{
   /* clear: both; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 153px 53px;
   margin-right: 303px;
-  padding-top: 56px;
+  /* z-index: -11111; */
+  /* padding-top: 56px; */
 }
 /* Navbar------------------------------------------------------------------------------------------- */
 .navbar{
 
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  width: 100%;
+  height: 100px; 
+  z-index: 40;
+  inset: 0;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  max-height:137px;
+  /* max-height:137px; */
   padding: 0px 39px 0px 61px;
   /* margin-bottom: 53px; */
   background: linear-gradient(270deg, rgba(224, 224, 223, 0.65) -3.61%, rgba(255, 143, 126, 0.429) 98.29%);
 
+}
+.menu{
+  display: none;
 }
 .logoContainer{
 
@@ -43,7 +63,7 @@ position:relative;
 .personalInfoContainer ul li{
   margin-right: 24px;
 }
-.personalInfoContainer ul li {
+.personalInfoContainer ul li,.SidebarTrigger {
   font-size: 38px;
 }
 /* sidbar------------------------------------------------------------------------------------ */
@@ -51,14 +71,26 @@ position:relative;
   /* display:flex;
   flex-direction: column; */
   /* float: right; */
-  position:absolute;
+  /* position:absolute;
   top: 0%;
   right: 0%;
-  width: 250px;
-  height: auto;
+  width: 260px;
+  height: auto; */
+  height: 100vh; /* Full viewport height */
+  overflow-y: auto;
   background-color: #ffffff;
   border-left: 1px solid #EEEEEE;
+  padding-bottom:100px;
 
+}
+.sidebar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for other browsers */
+.sidebar {
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
 }
 .sidebarTitel{
   display: flex;
@@ -83,26 +115,51 @@ position:relative;
 .sidebar ul{
   list-style: none;
 }
-.sidebar ul li{
+.sidebar ul li,.sidebar ul li .Links{
   display: flex;
   justify-content: start;
   gap: 15px;
   align-items: center;
   height: 38px;
+  width: 239px;
   padding: 0 10px 0 10px;
-}
-.sidebar ul li label{
+  cursor: pointer;
   font-size: 15px;
   font-weight: 400;
+  color: #341217aa;
+}
+
+.sidebar ul li .Links:hover{
+  background-color: #FFFBF8;
+  border-radius: 50px;
   color: #341217;
-  
+}
+
+.sidebar ul li .Activ{
+  border-left: 3px solid #341217;
+  background-color: #FFFBF8;
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+}
+.sidebar ul li .Activ:hover{
+ border-radius: 0px;
+
+
+}
+.sidebar ul li .Activ label{
+  color: #341217;
+}
+
+.SidebarTrigger{
+  z-index: 10001;
 }
 /* inputs Style ----------------------------------------------------------------------------- */
 .drop-down-container{
   display: flex;
+  flex: 1;
   flex-direction: row;
   justify-content: center;
-  width: 163px;
+  max-width: 163px;
   /* min-width: 163px; */
   /* max-width: 319px; */
   height: 35px;
@@ -113,6 +170,9 @@ position:relative;
   /* margin: 20px; */
 
 
+}
+.Primary{
+  max-width: 289px;
 }
 .drop-down-container .trigger{
   display: flex;
@@ -131,6 +191,9 @@ position:relative;
   color: #979797;
 
   
+}
+.Primary .trigger{
+  width: 269px;
 }
 .drop-down-container .DropdownContent{
   /* display: flex;
@@ -158,7 +221,7 @@ position:relative;
   background-color: #FFF2E9;
 
 }
-.DropdownContent>.active{
+.DropdownContent>.active,.DropdownContent>.active:hover{
   background-color: #F58634;
   font-weight: 600;
   color: #FFFFFF;
@@ -166,12 +229,14 @@ position:relative;
 }
 .textBoxContainer{
   display: flex;
+  flex: 1;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 319px;
+  /* width: 319px; */
+  max-width: 289px;
   height: 35px;
-  border-radius: 10px;
+  border-radius: 5px;
   border: 1px solid #E9E9E9;
   /* margin: 89px; */
   padding: 5px 17px;
@@ -180,7 +245,8 @@ position:relative;
 }
 .textBoxContainer input{
   outline: none;
-  width: 250px;
+  /* width: 250px; */
+  width: 220px;
   /* margin-right: 17px; */
   /* display: flex; */
 
@@ -199,8 +265,10 @@ color: #979797;
 
 .datePicker{
   display: flex;
+  flex: 1;
   justify-content: end;
-  width: 163px;
+  max-width: 209px;
+  min-width: 163px;
 height: 35px;
 border-radius: 5px ;
 border: 1px solid #E9E9E9 ;
@@ -215,8 +283,106 @@ border: 1px solid #E9E9E9 ;
   color: #686767;
 }
 
+.checkbox-container input[type="checkbox"] ,.check{
+  display: none;
+}
+
+/* Label container */
+.checkbox-container {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 26.24px;
+  color: #444444;
+
+}
+
+/* Custom checkbox */
+.checkbox-container .checkmark {
+  width: 16px;
+  height: 16px;
+  border: 1px solid #FF746B;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 8px;
+  background-color: white;
+  color: #ffffff;
+  font-size: 30px;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Change background to red when checked */
+.checkbox-container input[type="checkbox"]:checked + .checkmark {
+  background-color: #FF746B;
+  border-color: #FF746B;
+}
+.checkbox-container input[type="checkbox"]:checked + .check {
+  display: inline;
+}
+
+.CheckBoxLable{
+font-size: 14px;
+font-weight: 600;
+line-height: 26.24px;
+color: #444444;
+padding-right: 10px;
+
+}
+.InputStyle{
+  flex: 1;
+  max-width: 129px;
+ height: 35px;
+ border-radius: 5px;
+ border: 1px solid #E9E9E9;
+ padding: 10px;
 
 
+}
+.NumricalInput{
+  width: 118px;
+  height: 35px;
+  border-radius: 5px ;
+  border: 1px solid #E9E9E9;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 26.24px;
+  color: #979797;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: start;
+
+}
+.TextAreaStyle{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px;
+  /* margin: 0 32px ; */
+  width: 80%;
+  height: 61px;
+  border-radius: 5px;
+  border: 1px solid #E9E9E9;
+
+}
+.FileInputStyle{
+  /* width: 113px; */
+  height: 30px;
+  border-radius: 5px;
+  border: 1px solid #E9E9E9;
+  background-color: #FFFFFF;
+  font-size: 14px;
+  /* font-weight: 600; */
+  line-height: 26.24px;
+  color: #979797;
+
+
+}
 /* Buttons -------------------------------------------------------------------------*/
 .PrimaryButton{
   width: 164px;
@@ -230,80 +396,167 @@ font-size: 14px;
 font-weight: 700;
 line-height: 16.8px;
 color: #FFFFFF;
+margin: 10px;
 
+}
+.PrimaryButton:hover{
+  background: #f58434de;
 }
 
 /* forms ---------------------------------------------------------------------------- */
 .FormContainer{
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  /* gap: 10px; */
   /* margin-right: 303px; */
-  margin-left: 53px;
+  /* margin-left: 53px; */
   direction: rtl;
   max-width: 1076px;
+  /* margin: 0 50px; */
+  /* width: 100%; */
   border: 1px solid black;
+  height: auto;
 
 }
-.TripForm{
+.SearchForm{
 display: flex;
 flex-direction: column;
 padding: 0 10px;
-gap: 21px;
+/* gap: 10px; */
 }
-.FormContainer .TripFormTitle{
+.FormContainer .SearchFormTitle ,.FormContainer .PassengerSearchFormTitle,
+.FormContainer .AddTripFormTitle,.FormContainer .AddPassengerFormTitle,
+.FormContainer .AddCarFormTitle,.FormContainer .BloodSearchFormTitle,
+.FormContainer .AddBloodFormTitle,.FormContainer .AddJopFormTitle,
+.FormContainer .AddGraduateFormTitle,.FormContainer .GraduateSearchFormTitle,
+.FormContainer .TechnicalSearchFormTitle{
   max-width: 1076px;
 height: 50px;
 padding: 6px 16px 6px 10px;
 background: #222B45;
+margin-bottom: 10px;
 
 }
-.FormContainer .TripFormTitle h2{
+.FormContainer .PassengerSearchFormTitle,.FormContainer .AddTripFormTitle,.FormContainer .BloodSearchFormTitle,
+.FormContainer .AddBloodFormTitle,.FormContainer .AddJopFormTitle,
+.FormContainer .AddGraduateFormTitle,.FormContainer .GraduateSearchFormTitle,
+.FormContainer .TechnicalSearchFormTitle{
+  background: #B88028;
+}
+.FormContainer .SearchFormTitle h2,.FormContainer .PassengerSearchFormTitle,
+.FormContainer .AddTripFormTitle, .FormContainer .AddPassengerFormTitle,
+.FormContainer .AddCarFormTitle,.FormContainer .BloodSearchFormTitle,
+.FormContainer .AddBloodFormTitle,.FormContainer .AddJopFormTitle,
+.FormContainer .AddGraduateFormTitle,.FormContainer .GraduateSearchFormTitle,
+.FormContainer .TechnicalSearchFormTitle{
 font-size: 20px;
 font-weight: 700;
 line-height: 37.94px;
 color: #FFFFFF;
 
 }
-.FormContainer .TripFormBody{
+.FormContainer .SearchFormBody,.FormContainer .AddFormBody{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-
-  gap: 15px;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: auto;
+  margin-bottom: 10px;
 
 }
-.FormContainer .TripFormBody .Col1 ,.FormContainer .TripFormBody .Col2 , .FormContainer .TripFormBody .Col3,.FormContainer .TripFormBody .Col4{
+.FormContainer .SearchFormBody .Row1 ,
+.FormContainer .SearchFormBody .Row2 ,
+ .FormContainer .SearchFormBody .Row3,
+ .FormContainer .SearchFormBody .Row4,
+ .FormContainer .SearchFormBody .Row5{
   display: flex;
-  flex-direction: column;
-  /* justify-content: end; */
-  /* align-items: center; */
-  gap:22px; 
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap:10px; 
+  width: 100%;
+  justify-content:start;
+}
+.FormContainer .BloodSearch .Row1 ,.FormContainer .BloodSearch .Row2 {
+  justify-content:start;
 }
 
-.FormContainer .TripFormBody .Col1 ,.FormContainer .TripFormBody .Col3 span{
+.FormContainer .Trip .Row1 .drop-down-container,.FormContainer .BloodSearch .Row1 .drop-down-container{
+  /* width: 163px; */
+}
+.FormContainer .Trip .Row1 .drop-down-container .trigger,
+.FormContainer .BloodSearch .Row1 .drop-down-container .trigger{
+  /* width: 153px; */
+}
+.FormContainer .Trip .Row3 .drop-down-container,
+.FormContainer .Technical .Row3 .drop-down-container,
+.FormContainer .AddTechnical .Row7 .drop-down-container{
+ 
+  /* width: 289px; */
+}
+.FormContainer .Trip .Row3 .drop-down-container .trigger,
+.FormContainer .Technical .Row3 .drop-down-container .trigger,
+.FormContainer .AddTechnical .Row7 .drop-down-container .trigger{
+  /* width: 269px; */
+}
+
+.FormContainer .Trip .Row3>div:first-of-type{
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  /* gap: 29px; */
+  /* width: 480px; */
+}
+.FormContainer .SearchFormBody .Row1 ,.FormContainer .SearchFormBody .Row3 span{
   
   font-size: 14px;
   font-weight: 600;
   line-height: 26.24px;
-  color: #444444;
+  /* color: #444444; */
   /* padding-top: 19px ; */
   /* align-items: center; */
-  gap:35px; 
-  
-  
+  /* gap:35px;   */
 }
-.FormContainer .TripFormBody .Col3 span{
 
+.FormContainer .SearchFormBody .Row3 span{
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 10px;
 }
 
-/* .FormContainer .TripFormBody .PrimaryButton{
-  text-align: start;
-} */
+.FormContainer .SearchFormBody .Row1 ,.FormContainer .SearchFormBody .Row2 , .FormContainer .SearchFormBody .Row3{
+  /* display: flex;
+  flex-direction: row; */
+  /* gap:22px;  */
+}
+
+.FormContainer .SearchGraduate>div:first-of-type .InputStyle
+/* .FormContainer .SearchGraduate>div:nth-of-type(2) .InputStyle, */
+/* .FormContainer .SearchGraduate .drop-down-container */
+{
+
+  width: 320px ;
+}
+.FormContainer .SearchGraduate .drop-down-container .trigger{
+  width: 300px;
+}
+.FormContainer .SearchGraduate>div>label,.FormContainer .SearchGraduate>div:last-of-type label
+{
+
+font-size: 14px;
+font-weight: 600;
+line-height: 26.24px;
+/* color: #444444; */
+}
+.FormContainer .AddFormBody{
+  /* display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 15px; */
+
+}
 .FormContainer>label:last-of-type{
   text-align: end;
 font-size: 14px;
@@ -315,20 +568,570 @@ margin-left: 34px;
 
 }
 
-.FormContainer .Col4 .drop-down-container{
-  width: 319px;
+
+/* .FormContainer .Row1 .drop-down-container{
+  width: 284px;
   height: 35px;
-  padding: 3px 17px;
+
+} */
+.FormContainer .SearchJops .Row2 .drop-down-container,
+.FormContainer .SearchJops .Row1 .drop-down-container,
+.FormContainer .SearchJops .Row2 .textBoxContainer{
+  /* width: 284px;
+  height: 35px; */
+
 }
-.FormContainer .Col4 .drop-down-container .trigger{
+.FormContainer .SearchJops .Row3 .InputStyle{
+  /* width: 174px; */
+  /* height: 35px; */
+
+}
+/* .FormContainer .Col4 .drop-down-container .trigger{
   width: 285px;
   
-  /* padding: 4px 17px; */
+} */
+/* .FormContainer .Row1 .drop-down-container .trigger,
+.FormContainer .Row1 .drop-down-container .trigger, */
+.FormContainer .SearchJops .Row2 .drop-down-container .trigger,
+.FormContainer .SearchJops .Row1 .drop-down-container .trigger{
+  /* width: 257px; */
   
 }
+.FormContainer .SearchJops .Row2 .textBoxContainer input{
+  /* width: 200px; */
+}
+.FormContainer .AddFormBody .Row1 ,
+.FormContainer .AddFormBody .Row2 ,
+.FormContainer .AddFormBody .Row3 ,
+.FormContainer .AddFormBody .Row4 ,
+.FormContainer .AddFormBody .Row5 ,
+.FormContainer .AddFormBody .Row6 ,
+.FormContainer .AddFormBody .Row7 ,
+.FormContainer .AddFormBody .Row8,
+.FormContainer .AddFormBody .Row9,
+.FormContainer .AddFormBody .Row10,
+.FormContainer .AddFormBody .Row11,
+.FormContainer .AddFormBody .Row12,
+.FormContainer .AddFormBody .Row13 , .FormContainer .AddFormBody .Row3,
+.FormContainer .AddCarFormTitle .Row4,.FormContainer .AddBlood .Row4{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap:10px; 
+  width: 100%;
+  justify-content:start;
+  align-items: center;
+}
+.FormContainer .BloodSearch .Row1>label,.FormContainer .BloodSearch .Row2>label,
+.FormContainer .BloodSearch .Row2>label,.FormContainer 
+.AddBlood .Row1>label,
+.FormContainer .AddBlood .Row2>label,
+.FormContainer .AddBlood .Row3>label,
+.FormContainer .AddBlood .Row4>label:first-of-type{
+
+  display: inline-flex;
+  /* flex-direction: row; */
+  /* flex:content; */
+  /* width: 219px; */
+  /* justify-content: left; */
+  /* width: 193px; */
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 26.24px;
+  /* color: #444444; */
+}
+.FormContainer .SearchFormBody>div>label{
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 26.24px;
+  /* color: #444444; */
+}
+
+.FormContainer .AddBlood .Row4>label:first-of-type{
+/* width: 130px; */
+/* justify-content: right; */
+}
+.FormContainer .BloodSearch .Row1,.FormContainer .BloodSearch .Row2,
+.FormContainer .AddBlood .Row3{
+  /* gap: 18px; */
+}
+.FormContainer .BloodSearch .Row1 .checkbox-container{
+  /* margin-right: 51px; */
+}
+.FormContainer .BloodSearch .textBoxContainer,.FormContainer .AddBlood .textBoxContainer{
+
+  /* width: 289px; */
+}
+.FormContainer .AddGraduate  .InputStyle,
+.FormContainer .AddTechnical .InputStyle,
+.FormContainer .Worker .InputStyle,
+.FormContainer .AddJop .InputStyle,
+.FormContainer .AddPassenger .Row2 .InputStyle
+/* .FormContainer .Technical .InputStyle,
+ */
+{
+
+  max-width: 155px;
+}
+.FormContainer .AddBlood .Row1 .InputStyle,
+.FormContainer .AddGraduate .Row1 .InputStyle,
+.FormContainer .Worker .Row1 .InputStyle,
+.FormContainer .AddTechnical .Row1 .InputStyle,
+.FormContainer .AddPassenger .Row1 .InputStyle,
+.FormContainer .AddCar .Row2 .InputStyle,
+.FormContainer .AddJop .Row3 .InputStyle:first-of-type,
+.FormContainer .Tab1 .Row1 .InputStyle:first-of-type
+{
+
+  max-width: 309px;
+}
+.FormContainer .Worker .Row8 .InputStyle
+{
+  max-width: 319px;
+}
+.FormContainer .AddBlood .Row4 .InputStyle,.FormContainer .Tab1 .Row2 .InputStyle,
+.FormContainer .Tab1 .Row3 .InputStyle,
+.FormContainer .Tab1 .Row4 .InputStyle,.FormContainer .Tab1 .Row1 .InputStyle:nth-of-type(2),
+.FormContainer .Tab .Row1 .InputStyle,.FormContainer .Tab .Row2 .InputStyle
+{
+
+  max-width: 163px;
+}
+
+.FormContainer .Technical .Row2 .InputStyle
+{
+
+  width: 203px;
+}
+.FormContainer .AddTechnical .Row5 .InputStyle{
+  max-width: 220px;
+}
+.FormContainer .BloodSearch .Row1 .drop-down-container,
+.FormContainer .AddBlood .Row2 .drop-down-container {
+  /* width: 219px; */
+  
+}
+.FormContainer .BloodSearch .Row1 .drop-down-container .trigger,
+.FormContainer .AddBlood .Row2 .drop-down-container .trigger{
+  /* width: 173px; */
+  
+}
+.FormContainer .AddBlood .Row2 .drop-down-container .trigger>label,
+.FormContainer .AddBlood .Row3 .drop-down-container .trigger>label{
+  text-align: start;
+  
+  
+}
+
+
+.FormContainer .AddFormBody .InputStyle{
+  /* width: 129px; */
+ height: 35px;
+ border-radius: 5px;
+ border: 1px solid #E9E9E9;
+ padding: 10px;
+
+
+}
+.FormContainer .AddFormBody label{
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 26.24px;
+  /* color: #444444; */
+  /* min-width: 110px; */
+  /* text-align: left; */
+}
+.FormContainer .AddFormBody .Row2 .InputStyle,.FormContainer .AddFormBody .Row1 .InputStyle{
+  /* width: 312px; */
+}
+.FormContainer .AddFormBody .Row3 .InputStyle,.FormContainer .AddFormBody .Row4 .InputStyle{
+  /* width: 251px; */
+}
+
+
+
 /* .FormContainer .Col4 .DropdownContent{
   background-color: black;
 } */
+
+/* Table-------------------------------------------------------------------------------- */
+.TableContainer{
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  /* margin-left: 53px; */
+  margin-top: 20px;
+  direction: rtl;
+  max-width: 1076px;
+  min-height: 516px;
+
+  border: 1px solid black;
+
+}
+.ResultTable{
+height: auto;
+padding: 20px;
+
+}
+.ResultTable tr{
+  max-width:  1076px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  /* align-items: center; */
+  border-bottom: 1px solid #EEEEEE;
+  padding: 6px 36px;
+  min-height: 80px;
+}
+.ResultTable tr:nth-of-type(even){
+  background-color: #FFF2E9;
+}
+.ResultTable td span{
+
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 22px;
+  color: #707070;
+  margin-bottom: 3px;
+  text-align: center;
+
+}
+.ResultTable td,.ResultTable th {
+  /* min-width:100px ; */
+  max-width: 181px;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items:center;
+  /* flex-direction:row ; */
+  /* width: 181px; */
+
+}
+.ResultTable td:first-of-type,.ResultTable th:first-of-type {
+
+  /* width: 110px; */
+
+}
+/* .ResultTable thead{
+text-align: right;
+} */
+/* .ResultTable thead th{
+  max-width:120px ;
+  } */
+  .ResultTable  th{
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16.8px;
+    /* text-align: right; */
+        
+
+  }
+.ResultTable thead tr:first-of-type{
+  border: none;
+  min-height: 40px;
+  background: #FFEBDD;
+  
+
+
+}
+/* .ResultTable .Cars-PAssengers td,.ResultTable .Bloods td{
+
+  display: flex;
+  align-items: center;
+  justify-content: start;
+} */
+
+.ResultTable tbody .iconContainer{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  height: 80px;
+}
+.ResultTable tbody .iconContainer .Icon,.PrimaryButtonIcon{
+  color:#C74A51;
+  font-size: 20px;
+  background-color: inherit!important;
+  border: none;
+  box-shadow: none;
+  margin: 0 10px!important;
+  padding: 0!important;
+ 
+}
+.PrimaryButtonIcon{
+  /* width: 1074px; */
+}
+/*Pagination ----------------------------------------------------------------------- */
+.PaginationContainer{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  gap: 8px;
+
+}
+.ArrowContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  padding: 8px ;
+  gap:12px;
+  border-radius: 100px ;
+  border: 1.5px solid #ca590e;
+  /* margin: 0 12px; */
+}
+.ArrowContainer {
+ color: #FA8232;
+ font-size: 25px;
+}
+.PageNumberContainer,.ActivePageNumber{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  padding: 10px 0px 10px 0px;
+  gap: 10px;
+  border-radius: 100px;
+  border: 1px solid #E4E7E9;
+  
+}
+.PageNumberContainer label,.ActivePageNumber{
+/* font-family: Public Sans; */
+font-size: 14px;
+font-weight: 400;
+line-height: 20px;
+color: #191C1F;
+
+}
+.ActivePageNumber{
+  border-color: #FA8232;
+  background-color: #FA8232;
+}
+.ActivePageNumber label{
+  color: #ffffff;
+}
+
+/* tab-------------------------------------------------------------------- */
+.TabList{
+  height: 50px;
+  width: auto;
+  background-color: #FFFFFF;
+}
+.TabTitl{
+  width: 200px;
+height: 50px;
+padding: 6px 10px 6px 10px;
+/* border-bottom: 5px solid #F58634; */
+background-color: #FFFFFF;
+/* box-shadow: none; */
+border-radius: 0%;
+border-color: #B88028;
+
+
+}
+.Tab{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.Tab .InputStyle{
+ /* width: 300px; */
+}
+.Tab>div:first-of-type>.InputStyle,
+.Tab>div:nth-of-type(2)>.InputStyle,
+.Tab>div:nth-of-type(3)>.InputStyle,
+.Tab>div:nth-of-type(2) .drop-down-container{
+  /* width: 300px; */
+ }
+ .Tab>div:nth-of-type(2) .drop-down-container .trigger{
+  /* width: 280px; */
+ }
+
+ @media(max-width:1023px)
+ {
+  
+  .logoContainer .logoImage
+  {
+    display: none;
+    
+  }
+  .PageMainSection{
+    margin-right: 53px;
+  }
+ 
+   
+ }
+ @media(max-width:750px)
+ {
+body,.drop-down-container .trigger,
+.DropdownContent>label,.textBoxContainer ,
+.checkbox-container ,.CheckBoxLable ,
+.NumricalInput ,.TextAreaStyle,
+.FileInputStyle,.PrimaryButton,
+.FormContainer .SearchFormBody .Row1 ,
+.FormContainer .SearchFormBody .Row3 span,
+.FormContainer .SearchGraduate>div>label,
+.FormContainer .SearchGraduate>div:last-of-type label,
+.FormContainer>label:last-of-type,
+.FormContainer .BloodSearch .Row1>label,.FormContainer .BloodSearch .Row2>label,
+.FormContainer .BloodSearch .Row2>label,.FormContainer 
+.AddBlood .Row1>label,
+.FormContainer .AddBlood .Row2>label,
+.FormContainer .AddBlood .Row3>label,
+.FormContainer .AddBlood .Row4>label:first-of-type,
+.FormContainer .SearchFormBody>div>label,
+.FormContainer .AddFormBody label,
+.ResultTable td span,  .ResultTable  th,
+.PageNumberContainer label,.ActivePageNumber{
+  font-size: 12px;
+  /* font-weight: 400; */
+}
+
+.FormContainer,
+.ResultTable tr,
+.FormContainer .SearchFormTitle ,.FormContainer .PassengerSearchFormTitle,
+.FormContainer .AddTripFormTitle,.FormContainer .AddPassengerFormTitle,
+.FormContainer .AddCarFormTitle,.FormContainer .BloodSearchFormTitle,
+.FormContainer .AddBloodFormTitle,.FormContainer .AddJopFormTitle,
+.FormContainer .AddGraduateFormTitle,.FormContainer .GraduateSearchFormTitle,
+.FormContainer .TechnicalSearchFormTitle,
+.TableContainer{
+  max-width: 600px;
+  min-width: 350px;
+}
+.FormContainer .SearchFormTitle h2,.FormContainer .PassengerSearchFormTitle,
+.FormContainer .AddTripFormTitle, .FormContainer .AddPassengerFormTitle,
+.FormContainer .AddCarFormTitle,.FormContainer .BloodSearchFormTitle,
+.FormContainer .AddBloodFormTitle,.FormContainer .AddJopFormTitle,
+.FormContainer .AddGraduateFormTitle,.FormContainer .GraduateSearchFormTitle,
+.FormContainer .TechnicalSearchFormTitle{
+  font-size: 15px;
+}
+.personalInfoContainer ul li,.SidebarTrigger{
+  font-size: 30px;
+}
+.ArrowContainer{
+  height: 30px;
+  width: 30px;
+}
+.ArrowContainer {
+  color: #FA8232;
+  font-size: 15px;
+ }
+ .PageNumberContainer,.ActivePageNumber{
+  height: 30px;
+  width: 30px;
+  /* font-size: 15px; */
+ }
+
+ }
+ @media(max-width:563px){
+  .FormContainer .SearchFormTitle h2,.FormContainer .PassengerSearchFormTitle,
+.FormContainer .AddTripFormTitle, .FormContainer .AddPassengerFormTitle,
+.FormContainer .AddCarFormTitle,.FormContainer .BloodSearchFormTitle,
+.FormContainer .AddBloodFormTitle,.FormContainer .AddJopFormTitle,
+.FormContainer .AddGraduateFormTitle,.FormContainer .GraduateSearchFormTitle,
+.FormContainer .TechnicalSearchFormTitle{
+  font-size: 15px;
+}
+body,.drop-down-container .trigger,
+.DropdownContent>label,.textBoxContainer ,
+.checkbox-container ,.CheckBoxLable ,
+.NumricalInput ,.TextAreaStyle,
+.FileInputStyle,.PrimaryButton,
+.FormContainer .SearchFormBody .Row1 ,
+.FormContainer .SearchFormBody .Row3 span,
+.FormContainer .SearchGraduate>div>label,
+.FormContainer .SearchGraduate>div:last-of-type label,
+.FormContainer>label:last-of-type,
+.FormContainer .BloodSearch .Row1>label,.FormContainer .BloodSearch .Row2>label,
+.FormContainer .BloodSearch .Row2>label,.FormContainer 
+.AddBlood .Row1>label,
+.FormContainer .AddBlood .Row2>label,
+.FormContainer .AddBlood .Row3>label,
+.FormContainer .AddBlood .Row4>label:first-of-type,
+.FormContainer .SearchFormBody>div>label,
+.FormContainer .AddFormBody label,
+.ResultTable td span,  .ResultTable  th,
+.PageNumberContainer label,.ActivePageNumber{
+  font-size: 10px;
+  /* font-weight: 400; */
+}
+
+ }
+
+@media(max-width:1295px)
+{
+  /* .FormContainer .Trip .Row3>div:first-of-type{
+    gap:10px;
+    width: 450px;
+
+  } */
+}
+
+@media(max-width:1277px)
+{
+  /* .textBoxContainer,.FormContainer .Trip .Row3 .drop-down-container{
+    width: 269px;
+
+  }
+  .textBoxContainer input {
+    width: 200px;
+  }
+  .FormContainer .Trip .Row3 .drop-down-container .trigger
+  {
+    width: 249px;
+
+  } */
+}
+@media(max-width:1244px)
+{
+
+  /* .FormContainer .Trip .Row3>div:first-of-type{
+    gap:10px;
+    width: 430px;
+
+  } */
+}
+@media(max-width:1237px)
+{
+
+  /* .FormContainer .Trip .Row3>div:first-of-type{
+    gap:10px;
+    width: 430px;
+
+  } */
+}
+
+@media(max-width:1236px)
+{
+  /* .textBoxContainer,.FormContainer .Trip .Row3 .drop-down-container{
+    width: 229px;
+
+  }
+  .textBoxContainer input {
+    width: 196px;
+  }
+  .FormContainer .Trip .Row3 .drop-down-container .trigger
+  {
+    width: 209px;
+
+  } */
+}
+
+
+
+
 @layer base {
   :root {
 
@@ -381,6 +1184,22 @@ margin-left: 34px;
     --chart-5: 27 87% 67%;
 
     --radius: 0.5rem;
+
+    --sidebar-background:0 0% 98%;
+
+    --sidebar-foreground:240 5.3% 26.1%;
+
+    --sidebar-primary:240 5.9% 10%;
+
+    --sidebar-primary-foreground:0 0% 98%;
+
+    --sidebar-accent:240 4.8% 95.9%;
+
+    --sidebar-accent-foreground:240 5.9% 10%;
+
+    --sidebar-border:220 13% 91%;
+
+    --sidebar-ring:217.2 91.2% 59.8%;
   }
   .dark {
 
@@ -431,6 +1250,22 @@ margin-left: 34px;
     --chart-4: 280 65% 60%;
 
     --chart-5: 340 75% 55%;
+
+    --sidebar-background:240 5.9% 10%;
+
+    --sidebar-foreground:240 4.8% 95.9%;
+
+    --sidebar-primary:224.3 76.3% 48%;
+
+    --sidebar-primary-foreground:0 0% 100%;
+
+    --sidebar-accent:240 3.7% 15.9%;
+
+    --sidebar-accent-foreground:240 4.8% 95.9%;
+
+    --sidebar-border:240 3.7% 15.9%;
+
+    --sidebar-ring:217.2 91.2% 59.8%;
   }
 }
 @layer base {

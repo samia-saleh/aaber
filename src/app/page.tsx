@@ -1,9 +1,11 @@
-// import Image from "next/image";
-import TripSearch from "./Forms/TripSearch";
+// import Tab from "./Tabs/Tab";
 export default function Home() {
   return (
     <div >
-    <TripSearch></TripSearch>
+      {/* <Tab/> */}
+      
+  
+
     </div>
   );
 }

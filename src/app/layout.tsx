@@ -2,10 +2,15 @@ import type { Metadata } from "next";
 // import localFont from "next/font/local";
 import "./globals.css";
 import {Noto_Kufi_Arabic} from "next/font/google"
+import { Almarai } from "next/font/google";
 import Nabar from "./Navigation/Nabar";
 import Sidebar from "./Navigation/Sidebar";
-
-const KufiArabic=Noto_Kufi_Arabic({subsets:["arabic"],weight:["300","400","700","800"]})
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
+import Shadsidebar from "./Navigation/Shadsidebar";
+import ResponsiveSidebar from "./Navigation/ResponsiveSidebar";
+// import { AppSidebar } from "@/components/app-sidebar"
+// const KufiArabic=Noto_Kufi_Arabic({subsets:["arabic"],weight:["300","400","700","800"]})
+const Almarai=Noto_Kufi_Arabic({subsets:["arabic"],weight:["300","400","700","800"]})
 // const geistSans = localFont({
 //   src: "./fonts/GeistVF.woff",
 //   variable: "--font-geist-sans",
@@ -29,13 +34,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ar">
-  
-      <body  className={KufiArabic.className} >
+      <body  className={Almarai.className} >
          <header>
         <Nabar></Nabar>
       </header>
       <main dir="rtl">
         <Sidebar></Sidebar>
+        {/* <ResponsiveSidebar/> */}
+
+        
         <section className="PageMainSection">
         {children}
         </section>

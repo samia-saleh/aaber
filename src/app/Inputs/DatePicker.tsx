@@ -21,7 +21,7 @@ export function DatePicker() {
       <PopoverTrigger asChild>
         <Button
           variant={"outline"} className="datePicker">
-          <LuCalendarRange className="mr-2 h-4 w-2 " />
+          <LuCalendarRange className=" h-4 w-2 " />
           
         </Button>
       </PopoverTrigger>

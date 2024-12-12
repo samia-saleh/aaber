@@ -1,6 +1,6 @@
 
 import { LiaSearchSolid } from "react-icons/lia";
-const TextBox = ({Placeholder,Name}) => {
+const TextBox = ({Placeholder="",Name=""}) => {
   return (
     <div className="textBoxContainer">
       <input  type='text' placeholder={Placeholder} name={Name}/>
